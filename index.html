@@ -1,0 +1,1510 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ismael Pérez · Arquero & Programador</title>
+  <meta name="description" content="Portfolio personal de Ismael Pérez: arquero, fútbol, amigos y programación." />
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      /* Fondo claro (sin rosado) */
+      --bgA:#f7fbff;
+      --bgB:#eef5ff;
+
+      --paper: rgba(255,255,255,.86);
+      --paper2: rgba(255,255,255,.64);
+      --stroke: rgba(10,20,40,.10);
+
+      --ink: rgba(8,12,22,.92);
+      --muted: rgba(8,12,22,.70);
+
+      --blue:#2F7BFF;
+      --cyan:#00D0FF;
+      --red:#FF2F4A;
+      --orange:#FF7A2F;
+
+      --shadow: 0 26px 70px rgba(0,20,60,.10);
+      --shadow2: 0 30px 90px rgba(0,0,0,.14);
+      --radius: 18px;
+      --radius2: 26px;
+
+      --max: 1160px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 650px at 12% 10%, rgba(47,123,255,.18), transparent 58%),
+        radial-gradient(900px 520px at 88% 16%, rgba(0,208,255,.12), transparent 62%),
+        radial-gradient(900px 560px at 62% 95%, rgba(255,47,74,.06), transparent 60%),
+        linear-gradient(180deg, var(--bgA), var(--bgB));
+      overflow-x:hidden;
+    }
+
+    #bg{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      width:100%;
+      height:100%;
+      opacity:.95;
+    }
+
+    .container{ max-width:var(--max); margin:0 auto; padding:0 16px; }
+
+    /* ===== TOPBAR ===== */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--stroke);
+      box-shadow: 0 14px 38px rgba(0,0,0,.05);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:12px 4px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none; color:var(--ink);
+      font-weight: 1000;
+      letter-spacing:.2px;
+    }
+    .brand-badge{
+      width:44px; height:44px;
+      border-radius:18px;
+      display:grid; place-items:center;
+      color:#fff;
+      background: linear-gradient(135deg, rgba(47,123,255,.95), rgba(0,208,255,.80));
+      box-shadow: var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    .brand-badge::after{
+      content:"";
+      position:absolute; inset:-50%;
+      background: linear-gradient(135deg, rgba(255,255,255,.55), transparent 55%);
+      transform: rotate(20deg);
+      opacity:.55;
+      animation: shine 3.2s ease-in-out infinite;
+    }
+    @keyframes shine{
+      0%,100%{ transform: translateX(-6%) rotate(20deg); opacity:.45; }
+      50%{ transform: translateX(6%) rotate(20deg); opacity:.70; }
+    }
+    .brand small{
+      display:block;
+      font-weight: 900;
+      color: rgba(8,12,22,.62);
+      margin-top: 1px;
+      font-size: 12.5px;
+    }
+
+    .nav{
+      display:flex; align-items:center; gap:10px;
+      flex-wrap:wrap;
+    }
+    .nav a{
+      text-decoration:none;
+      color: rgba(8,12,22,.72);
+      font-weight: 950;
+      font-size: 13px;
+      padding:10px 12px;
+      border-radius: 14px;
+      transition: .2s ease;
+    }
+    .nav a:hover{
+      background: rgba(47,123,255,.10);
+      transform: translateY(-1px);
+      color: rgba(8,12,22,.92);
+    }
+
+    .btn{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.88);
+      color: var(--ink);
+      font-weight: 1000;
+      padding: 11px 13px;
+      border-radius: 14px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      transition: .2s ease;
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .btn-primary{
+      border-color: rgba(47,123,255,.22);
+      background: linear-gradient(135deg, rgba(47,123,255,.95), rgba(0,208,255,.75));
+      color:#fff;
+      box-shadow: 0 22px 55px rgba(47,123,255,.16);
+    }
+    .btn-danger{
+      border-color: rgba(255,47,74,.20);
+      background: linear-gradient(135deg, rgba(255,47,74,.92), rgba(255,122,47,.70));
+      color:#fff;
+      box-shadow: 0 22px 55px rgba(255,47,74,.12);
+    }
+    .btn-ghost{ background: rgba(255,255,255,.74); }
+
+    .hamburger{
+      display:none;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.92);
+      border-radius:14px;
+      padding:10px;
+      cursor:pointer;
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+    }
+    .hamburger span{
+      display:block;
+      width:22px; height:2px;
+      margin:5px 0;
+      border-radius:99px;
+      background: rgba(8,12,22,.80);
+    }
+
+    /* ===== HERO ===== */
+    .hero{ padding: 26px 0 14px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:start;
+    }
+
+    .chip{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(47,123,255,.18);
+      background: rgba(47,123,255,.10);
+      font-weight: 1000;
+      font-size: 13px;
+      color: rgba(8,12,22,.80);
+    }
+    .chip .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      box-shadow: 0 0 0 6px rgba(47,123,255,.10), 0 0 0 14px rgba(47,123,255,.06);
+    }
+    .title{
+      margin: 12px 0 10px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.9px;
+      font-weight: 1100;
+    }
+    .title .grad{
+      background: linear-gradient(135deg, rgba(8,12,22,.92), rgba(47,123,255,.95), rgba(255,47,74,.85));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+    }
+    .subtitle{
+      margin:0;
+      color: var(--muted);
+      line-height:1.65;
+      font-weight: 800;
+      max-width: 72ch;
+    }
+    .hero-actions{
+      margin-top: 14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .score{
+      margin-top: 14px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(10,20,40,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.64));
+      box-shadow: var(--shadow);
+      padding: 14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 12px;
+      position:relative;
+      overflow:hidden;
+    }
+    .score::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 20% 40%, rgba(47,123,255,.18), transparent 55%),
+        radial-gradient(circle at 80% 30%, rgba(0,208,255,.12), transparent 55%);
+      transform: rotate(10deg);
+      opacity:.9;
+    }
+    .score > *{ position:relative; z-index:1; }
+    .score-left h3{
+      margin:0 0 4px;
+      font-size: 16px;
+      font-weight: 1100;
+      letter-spacing:-.2px;
+    }
+    .score-left p{
+      margin:0;
+      color: rgba(8,12,22,.70);
+      font-weight: 900;
+      line-height:1.5;
+      font-size: 13.5px;
+    }
+    .scoreboard{
+      display:flex; align-items:center; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 18px;
+      border:1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.84);
+      box-shadow: 0 16px 40px rgba(0,0,0,.06);
+      font-weight: 1100;
+      color: rgba(8,12,22,.88);
+    }
+    .scoreboard .num{
+      width: 34px; height:34px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(47,123,255,.18), rgba(255,47,74,.12));
+      border:1px solid rgba(10,20,40,.10);
+      position:relative;
+      overflow:hidden;
+    }
+    .scoreboard .num::after{
+      content:"";
+      position:absolute;
+      inset:-50%;
+      background: linear-gradient(135deg, rgba(255,255,255,.50), transparent 60%);
+      transform: rotate(20deg);
+      animation: shine2 2.6s ease-in-out infinite;
+      opacity:.55;
+    }
+    @keyframes shine2{
+      0%,100%{ transform: translateX(-8%) rotate(20deg); }
+      50%{ transform: translateX(8%) rotate(20deg); }
+    }
+
+    .mini-grid{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(10,20,40,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.62));
+      box-shadow: var(--shadow);
+      padding: 14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 18% 30%, rgba(47,123,255,.14), transparent 55%);
+      transform: rotate(16deg);
+      opacity:.9;
+    }
+    .card > *{ position:relative; z-index:1; }
+    .card h4{
+      margin:0 0 8px;
+      display:flex; align-items:center; gap:10px;
+      font-size: 15px;
+      letter-spacing:-.2px;
+      font-weight: 1100;
+    }
+    .card p{
+      margin:0;
+      color: rgba(8,12,22,.74);
+      line-height:1.62;
+      font-weight: 850;
+      font-size: 14px;
+    }
+    .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
+    .tag{
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-weight: 1000;
+      font-size: 12px;
+      border: 1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.82);
+      color: rgba(8,12,22,.78);
+    }
+    .tag.blue{ background: rgba(47,123,255,.10); border-color: rgba(47,123,255,.18); }
+    .tag.red{ background: rgba(255,47,74,.08); border-color: rgba(255,47,74,.15); }
+
+    /* ===== POSTER (IMG cambiable) ===== */
+    .poster{
+      border-radius: var(--radius2);
+      border:1px solid rgba(10,20,40,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.62));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .poster-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 14px 10px;
+      gap:10px;
+    }
+    .avatar{
+      width:52px; height:52px;
+      border-radius: 18px;
+      display:grid; place-items:center;
+      color:#fff;
+      background: linear-gradient(135deg, rgba(255,47,74,.90), rgba(47,123,255,.92));
+      box-shadow: 0 0 0 6px rgba(255,47,74,.08), 0 0 0 14px rgba(47,123,255,.06);
+      font-weight: 1200;
+    }
+    .poster-sub{ margin:2px 0 0; color: rgba(8,12,22,.68); font-weight: 950; font-size: 13px; }
+    .role-pill{
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-weight: 1100;
+      font-size: 12px;
+      color: rgba(8,12,22,.82);
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(10,20,40,.10);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+    }
+
+    .poster-art{
+      height: 340px;
+      border-top: 1px solid rgba(10,20,40,.07);
+      border-bottom: 1px solid rgba(10,20,40,.07);
+      background:
+        radial-gradient(900px 360px at 20% 30%, rgba(47,123,255,.18), transparent 60%),
+        radial-gradient(900px 360px at 85% 45%, rgba(255,47,74,.10), transparent 62%),
+        rgba(255,255,255,.70);
+      position:relative;
+      overflow:hidden;
+    }
+    .poster-art img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.02);
+      filter: saturate(1.05) contrast(1.02);
+    }
+
+    .poster-footer{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      padding: 12px 12px 14px;
+    }
+    .mini{
+      border-radius: 18px;
+      border: 1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.84);
+      padding: 10px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 1100;
+      color: rgba(8,12,22,.78);
+    }
+    .mini i{ color: rgba(47,123,255,.95); }
+    .mini.red i{ color: rgba(255,47,74,.95); }
+
+    /* ===== SECTIONS ===== */
+    .section{ padding: 56px 0; }
+    .section.alt{
+      background:
+        radial-gradient(900px 540px at 10% 12%, rgba(47,123,255,.10), transparent 58%),
+        radial-gradient(850px 520px at 92% 22%, rgba(0,208,255,.08), transparent 62%),
+        rgba(255,255,255,.38);
+      border-top: 1px solid rgba(10,20,40,.08);
+      border-bottom: 1px solid rgba(10,20,40,.08);
+    }
+    .section-head{
+      margin-bottom: 16px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .section-title{
+      margin:0;
+      font-size: 28px;
+      font-weight: 1150;
+      letter-spacing:-.3px;
+    }
+    .section-subtitle{
+      margin:0;
+      color: rgba(8,12,22,.70);
+      font-weight: 950;
+      max-width: 72ch;
+    }
+
+    /* ===== STORY ===== */
+    .story{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(10,20,40,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.64));
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .story::before{
+      content:"";
+      position:absolute; inset:-50%;
+      background:
+        radial-gradient(circle at 16% 30%, rgba(47,123,255,.14), transparent 55%),
+        radial-gradient(circle at 85% 25%, rgba(0,208,255,.10), transparent 55%);
+      transform: rotate(10deg);
+      opacity:.95;
+    }
+    .story > *{ position:relative; z-index:1; }
+    .story p{
+      margin:0 0 10px;
+      color: rgba(8,12,22,.78);
+      font-weight: 880;
+      line-height: 1.7;
+    }
+
+    .toolkit{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .tool{
+      border-radius: 20px;
+      border:1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 14px 34px rgba(0,0,0,.06);
+      padding: 12px;
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      position:relative;
+      overflow:hidden;
+      transition: .2s ease;
+    }
+    .tool:hover{ transform: translateY(-2px); }
+    .tool-ico{
+      width:44px; height:44px;
+      border-radius: 18px;
+      display:grid; place-items:center;
+      color:#fff;
+      background: linear-gradient(135deg, rgba(47,123,255,.95), rgba(0,208,255,.78));
+      box-shadow: var(--shadow);
+      flex: 0 0 auto;
+      animation: floaty 2.6s ease-in-out infinite;
+    }
+    .tool.red .tool-ico{
+      background: linear-gradient(135deg, rgba(255,47,74,.92), rgba(255,122,47,.70));
+      animation-delay: .2s;
+    }
+    @keyframes floaty{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-4px); }
+    }
+    .tool h4{
+      margin:0 0 4px;
+      font-weight: 1150;
+      letter-spacing:-.2px;
+      font-size: 14.8px;
+    }
+    .tool p{
+      margin:0;
+      color: rgba(8,12,22,.70);
+      font-weight: 900;
+      line-height: 1.55;
+      font-size: 13.3px;
+    }
+
+    .noteBox{
+      margin-top: 12px;
+      border-radius: 20px;
+      border:1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 14px 34px rgba(0,0,0,.06);
+      padding: 12px;
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+    }
+    .noteBox .ico{
+      width:46px; height:46px;
+      border-radius: 18px;
+      display:grid; place-items:center;
+      color:#fff;
+      background: linear-gradient(135deg, rgba(47,123,255,.95), rgba(255,47,74,.75));
+      box-shadow: var(--shadow2);
+      flex: 0 0 auto;
+    }
+    .noteBox h4{ margin:0 0 4px; font-weight: 1150; }
+    .noteBox p{ margin:0; color: rgba(8,12,22,.72); font-weight: 900; line-height:1.55; }
+
+    /* ===== GALLERY (3 fotos) ===== */
+    .gallery-wrap{
+      border-radius: var(--radius2);
+      border:1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.66);
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .gitem{
+      border-radius: 20px;
+      border:1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.88);
+      overflow:hidden;
+      padding:0;
+      cursor:pointer;
+      position:relative;
+      transition: .18s ease;
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      text-align:left;
+      width: 100%;
+    }
+    .gitem:hover{ transform: translateY(-2px); }
+
+    .gmedia{
+      height: 400px;
+      border-bottom: 1px solid rgba(10,20,40,.08);
+      background: rgba(255,255,255,.70);
+      display:block;
+      position:relative;
+      overflow:hidden;
+    }
+    .gmedia img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.02);
+      transition: .25s ease;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .gitem:hover .gmedia img{ transform: scale(1.06); }
+
+    .gcap{
+      padding: 12px 12px 14px;
+      font-weight: 1100;
+      color: rgba(8,12,22,.84);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.84);
+      font-size: 12px;
+      font-weight: 1100;
+      color: rgba(8,12,22,.74);
+      white-space:nowrap;
+    }
+    .pill i{ color: rgba(47,123,255,.95); }
+    .pill.red i{ color: rgba(255,47,74,.95); }
+
+    .helpMini{
+      margin: 10px 0 0;
+      color: rgba(8,12,22,.62);
+      font-weight: 950;
+      font-size: 12.5px;
+    }
+
+    /* ===== VIDEOS (EMBEBIDOS) ===== */
+    .video-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .video-card{
+      border-radius: var(--radius2);
+      border:1px solid rgba(10,20,40,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.62));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* MISMA ALTURA PARA LOS 3 (poster + video) */
+    .vwrap{
+      position:relative;
+      aspect-ratio: 10 / 9;
+      background:
+        radial-gradient(640px 260px at 30% 30%, rgba(47,123,255,.20), transparent 60%),
+        radial-gradient(640px 260px at 70% 40%, rgba(255,47,74,.10), transparent 62%),
+        linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.58));
+      border-bottom: 1px solid rgba(10,20,40,.08);
+      overflow:hidden;
+    }
+    .vwrap video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover; /* el poster queda prolijo */
+      display:block;
+      background:#fff;
+    }
+
+    .vexpand{
+      position:absolute;
+      top:10px; right:10px;
+      width:44px; height:44px;
+      border-radius: 16px;
+      border: 1px solid rgba(10,20,40,.12);
+      background: rgba(255,255,255,.88);
+      cursor:pointer;
+      display:grid; place-items:center;
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+      transition: .18s ease;
+      z-index: 3;
+    }
+    .vexpand:hover{ transform: translateY(-1px); background: rgba(47,123,255,.10); }
+
+    .video-body{ padding: 12px 14px 14px; }
+    .video-body h4{ margin:0 0 6px; font-weight: 1150; }
+    .video-body p{ margin:0; color: rgba(8,12,22,.72); font-weight: 900; line-height: 1.55; font-size: 13.8px; }
+    .video-actions{ margin-top: 10px; display:flex; gap:10px; flex-wrap:wrap; }
+
+    /* ===== PROGRAMACIÓN ===== */
+    .dev{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(10,20,40,.10);
+      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.62));
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .dev::before{
+      content:"";
+      position:absolute; inset:-40%;
+      background:
+        radial-gradient(circle at 20% 40%, rgba(47,123,255,.14), transparent 55%),
+        radial-gradient(circle at 75% 25%, rgba(255,47,74,.08), transparent 55%);
+      transform: rotate(-10deg);
+      opacity:.95;
+    }
+    .dev > *{ position:relative; z-index:1; }
+    .dev h3{ margin:0 0 8px; font-weight: 1150; display:flex; gap:10px; align-items:center; }
+    .dev p{ margin:0; color: rgba(8,12,22,.74); font-weight: 900; line-height:1.65; }
+    .codebox{
+      border-radius: 18px;
+      border: 1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.84);
+      padding: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12.8px;
+      color: rgba(8,12,22,.86);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+      overflow:auto;
+      max-height: 200px;
+    }
+    .codebox .k{ color: rgba(47,123,255,.95); font-weight: 1000; }
+    .codebox .r{ color: rgba(255,47,74,.95); font-weight: 1000; }
+    .codebox .g{ color: rgba(0,140,70,.95); font-weight: 1000; }
+
+    /* ===== FOOTER ===== */
+    .footer{
+      padding: 32px 0 22px;
+      border-top: 1px solid rgba(10,20,40,.08);
+      background: rgba(255,255,255,.56);
+      backdrop-filter: blur(10px);
+    }
+    .footer-grid{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .social{ display:flex; gap:10px; }
+    .social a{
+      width:44px; height:44px;
+      display:grid; place-items:center;
+      border-radius: 16px;
+      border: 1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.86);
+      color: rgba(8,12,22,.80);
+      text-decoration:none;
+      box-shadow: 0 10px 22px rgba(0,0,0,.05);
+      transition: .2s ease;
+    }
+    .social a:hover{ transform: translateY(-2px); background: rgba(47,123,255,.10); }
+    .toTop{
+      text-decoration:none;
+      font-weight: 1100;
+      color: rgba(8,12,22,.80);
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+    }
+    .toTop:hover{ text-decoration:underline; }
+
+    /* ===== MODAL (IMG y VIDEO) ===== */
+    .modal{
+      position:fixed; inset:0;
+      z-index:90;
+      display:none;
+    }
+    .modal.open{ display:block; }
+    .modal-back{
+      position:absolute; inset:0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+    }
+    .modal-card{
+      position:relative;
+      width: min(980px, calc(100% - 18px));
+      margin: 7vh auto 0;
+      border-radius: var(--radius2);
+      overflow:hidden;
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(255,255,255,.40);
+      box-shadow: var(--shadow2);
+      animation: pop .18s ease both;
+    }
+    @keyframes pop{
+      from{ transform: translateY(10px) scale(.98); opacity:0 }
+      to{ transform: translateY(0) scale(1); opacity:1 }
+    }
+    .modal-close{
+      position:absolute;
+      top:10px; right:10px;
+      width:42px; height:42px;
+      border-radius: 16px;
+      border: 1px solid rgba(10,20,40,.10);
+      background: rgba(255,255,255,.90);
+      cursor:pointer;
+      display:grid; place-items:center;
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+      z-index:2;
+    }
+    .modal-media{
+      width:100%;
+      max-height: 72vh;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .modal-media img{
+      width:100%;
+      height:auto;
+      max-height:72vh;
+      object-fit:contain;
+      display:block;
+      background:#fff;
+    }
+    .modal-media video{
+      width:100%;
+      height:auto;
+      max-height:72vh;
+      display:block;
+      background:#000;
+    }
+    .modal-hint{
+      padding: 10px 14px 14px;
+      color: rgba(8,12,22,.62);
+      font-weight: 1000;
+      font-size: 12px;
+    }
+
+    /* ===== REVEAL ===== */
+    .reveal{
+      opacity:0;
+      transform: translateY(10px);
+      transition: .6s ease;
+    }
+    .reveal.on{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .story{ grid-template-columns: 1fr; }
+      .gallery{ grid-template-columns: 1fr; }
+      .video-grid{ grid-template-columns: 1fr; }
+      .dev{ grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px){
+      .nav{
+        position:fixed;
+        top: 66px;
+        left: 12px;
+        right: 12px;
+        display:none;
+        flex-direction:column;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 18px;
+        border: 1px solid rgba(10,20,40,.10);
+        background: rgba(255,255,255,.94);
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow2);
+      }
+      .nav.open{ display:flex; }
+      .hamburger{ display:block; }
+      .mini-grid{ grid-template-columns: 1fr; }
+      .toolkit{ grid-template-columns: 1fr; }
+      .poster-art{ height: 260px; }
+      .gallery{ grid-template-columns: 1fr; }
+
+      /* =========================
+         CAMBIOS SOLO EN CELULAR ✅
+         1) 3 botones en 1 línea
+         2) Modo Partido centrado + marcador abajo
+         ========================= */
+
+      /* 1) Botones: Mi historia / Mis videos / Programación en una línea */
+      .hero-actions{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .hero-actions .btn{
+        width: 100%;
+        justify-content: center;
+        padding: 10px 8px;
+        font-size: 12.2px;
+        gap: 7px;
+        white-space: nowrap;
+      }
+      .hero-actions .btn i{
+        font-size: 13px;
+      }
+
+      /* 2) Modo Partido: texto centrado y marcador abajo (sin columnas) */
+      .score{
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+      .score-left h3,
+      .score-left p{
+        text-align: center;
+      }
+      .scoreboard{
+        width: 100%;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 8px;
+        padding: 9px 10px;
+        margin-top: 8px;
+        font-size: 12.5px;
+      }
+      .scoreboard span{ white-space: nowrap; }
+      .scoreboard .num{
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="bg"></canvas>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <a class="brand" href="#inicio">
+          <span class="brand-badge"><i class="fa-solid fa-hand"></i></span>
+          <span>
+            Ismael Pérez
+            <small>Arquero · 12 años · Portfolio</small>
+          </span>
+        </a>
+
+        <nav class="nav" id="nav">
+          <a href="#sobre">Historia</a>
+          <a href="#galeria">Fotos</a>
+          <a href="#videos">Videos</a>
+          <a href="#dev">Programación</a>
+          <a href="#contacto">Contacto</a>
+          <a class="btn btn-primary" href="#galeria"><i class="fa-solid fa-images"></i> Galería</a>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="chip reveal">
+            <span class="dot"></span>
+            <span><strong>Mi sueño: conocer al Dibu Martínez</strong></span>
+          </div>
+
+          <h1 class="title reveal">Hola, soy <span class="grad">Ismael Pérez</span>.</h1>
+
+          <p class="subtitle reveal">
+            Tengo 12 años, me encanta el fútbol y encontré mi lugar como arquero.
+            Este portfolio lo estoy haciendo <strong>yo</strong>, porque también me gusta programar.
+          </p>
+
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#sobre"><i class="fa-solid fa-shield-heart"></i> Mi historia</a>
+            <a class="btn btn-danger" href="#videos"><i class="fa-solid fa-play"></i> Mis videos</a>
+            <a class="btn btn-ghost" href="#dev"><i class="fa-solid fa-code"></i> Programación</a>
+          </div>
+
+          <div class="score reveal">
+            <div class="score-left">
+              <h3><i class="fa-solid fa-star" style="color:rgba(255,47,74,.95)"></i> Modo Partido</h3>
+              <p>Disciplina + calma + foco. En el arco: <strong>yo no me rindo</strong>.</p>
+            </div>
+
+            <div class="scoreboard" aria-label="Marcador (decorativo)">
+              <span style="opacity:.85;">ISMAEL</span>
+              <span class="num" id="scrA">0</span>
+              <span style="opacity:.65;">–</span>
+              <span class="num" id="scrB">0</span>
+              <span style="opacity:.85;">RIVAL</span>
+            </div>
+          </div>
+
+          <div class="mini-grid">
+            <article class="card reveal">
+              <h4><i class="fa-solid fa-hand-paper"></i> Mi rol</h4>
+              <p>Me gusta atajar, ordenar la defensa y levantar al equipo.</p>
+              <div class="tags">
+                <span class="tag blue">Arquero</span>
+                <span class="tag">Reflejos</span>
+                <span class="tag">Foco</span>
+              </div>
+            </article>
+
+            <article class="card reveal">
+              <h4><i class="fa-solid fa-people-group"></i> Cómo soy</h4>
+              <p>Soy buena persona, empático y me gusta tener muchos amigos.</p>
+              <div class="tags">
+                <span class="tag red">Empatía</span>
+                <span class="tag">Amistad</span>
+                <span class="tag">Respeto</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- POSTER (CAMBIÁ EL SRC EN EL CÓDIGO) -->
+        <aside class="poster reveal" aria-label="Tarjeta destacada">
+          <div class="poster-head">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <div class="avatar">IP</div>
+              <div>
+                <p class="poster-sub">Arquero · Fútbol · 12 años</p>
+              </div>
+            </div>
+            <div class="role-pill"><i class="fa-solid fa-shield"></i> GUARDIÁN DEL ARCO</div>
+          </div>
+
+          <div class="poster-art">
+            <img
+              src="./img/guantes.jfif"
+              alt="Imagen principal del portfolio (cambiable desde el código)"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="poster-footer">
+            <div class="mini"><i class="fa-solid fa-futbol"></i> Fútbol</div>
+            <div class="mini red"><i class="fa-solid fa-heart"></i> Amigos</div>
+            <div class="mini"><i class="fa-solid fa-code"></i> Programo</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORIA (NO CAMBIADA) -->
+  <section class="section alt" id="sobre">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Mi historia</h2>
+        </div>
+        <a class="btn btn-ghost" href="#galeria"><i class="fa-solid fa-camera"></i> Ver fotos</a>
+      </div>
+
+      <div class="story reveal">
+        <div>
+          <p>
+            Me llamo Ismael Pérez. Desde chico me gusta el fútbol y encontré mi lugar como arquero. Hay días en los que la cabeza me va rápido, o los ruidos me molestan, o las emociones se sienten fuerte. Ser autista puede ser difícil… pero también me enseñó algo: yo no me rindo.
+          </p>
+          <p>
+            Cuando entreno, aprendo a respirar, a enfocarme y a confiar. Y cuando estoy con amigos, doy lo mejor de mí: acompaño y me gusta que todos se sientan bien. Mi sueño es seguir creciendo en la cancha y también como persona.
+          </p>
+
+          <div class="noteBox">
+            <div class="ico"><i class="fa-solid fa-star"></i></div>
+            <div>
+              <h4>Esto también soy yo</h4>
+              <p><strong>Esta web la estoy creando</strong>: me gusta programar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="toolkit">
+            <div class="tool reveal">
+              <div class="tool-ico"><i class="fa-solid fa-bolt"></i></div>
+              <div>
+                <h4>Reflejo Relámpago</h4>
+                <p>Cuando la pelota sale rápido… yo reacciono.</p>
+              </div>
+            </div>
+
+            <div class="tool red reveal">
+              <div class="tool-ico"><i class="fa-solid fa-shield"></i></div>
+              <div>
+                <h4>Muralla del Arco</h4>
+                <p>Mi misión: cuidar el arco y levantar al equipo.</p>
+              </div>
+            </div>
+
+            <div class="tool red reveal">
+              <div class="tool-ico"><i class="fa-solid fa-wind"></i></div>
+              <div>
+                <h4>Respirar y Enfocarme</h4>
+                <p>Me calma, me ordena y me hace más fuerte.</p>
+              </div>
+            </div>
+
+            <div class="tool reveal">
+              <div class="tool-ico"><i class="fa-solid fa-people-group"></i></div>
+              <div>
+                <h4>Amigo Leal</h4>
+                <p>Me gusta escuchar, acompañar y sumar amigos.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:12px;">
+            <h4><i class="fa-solid fa-flag-checkered" style="color:rgba(47,123,255,.95)"></i> Mi meta</h4>
+            <p>Seguir aprendiendo y ser Feliz.</p>
+            <div class="tags">
+              <span class="tag blue">Paso a paso</span>
+              <span class="tag red">No me rindo</span>
+              <span class="tag">Constancia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="section" id="galeria">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Galería de fotos</h2>
+          <p class="section-subtitle">Haciendo lo que me gusta!</p>
+        </div>
+      </div>
+
+      <div class="gallery-wrap reveal">
+        <div class="gallery" id="gallery">
+          <button class="gitem reveal" type="button" aria-label="Abrir foto 1">
+            <div class="gmedia">
+              <img loading="lazy" alt="Foto 1" src="img/cameon.jpeg" />
+            </div>
+            <div class="gcap">Foto 1 <span class="pill"><i class="fa-solid fa-camera"></i> Campeón</span></div>
+          </button>
+
+          <button class="gitem reveal" type="button" aria-label="Abrir foto 2">
+            <div class="gmedia">
+              <img loading="lazy" alt="Foto 2" src="img/isma.jpeg" />
+            </div>
+            <div class="gcap">Foto 2 <span class="pill red"><i class="fa-solid fa-fire"></i> Partido</span></div>
+          </button>
+
+          <button class="gitem reveal" type="button" aria-label="Abrir foto 3">
+            <div class="gmedia">
+              <img loading="lazy" alt="Foto 3" src="img/ismael.jpeg" />
+            </div>
+            <div class="gcap">Foto 3 <span class="pill"><i class="fa-solid fa-shield"></i> Entreno</span></div>
+          </button>
+        </div>
+
+        <div class="helpMini"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section class="section alt" id="videos">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Videos</h2>
+        </div>
+      </div>
+
+      <div class="video-grid">
+        <article class="video-card reveal">
+          <div class="vwrap">
+            <video class="vid" controls preload="metadata" playsinline poster="">
+              <source src="img/video.mp4">
+            </video>
+            <button class="vexpand" type="button" data-expand="video" aria-label="Agrandar video">
+              <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </button>
+          </div>
+
+          <div class="video-body">
+            <h4>Atajadas · Video 1</h4>
+            <p>Mis mejores atajadas.</p>
+            <div class="video-actions">
+              <a class="btn btn-primary" href="#contacto"><i class="fa-solid fa-message"></i> Contacto</a>
+              <a class="btn btn-ghost" href="#galeria"><i class="fa-solid fa-images"></i> Fotos</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="video-card reveal">
+          <div class="vwrap">
+            <video class="vid" controls preload="metadata" playsinline poster="">
+              <source src="img/video.mp4">
+            </video>
+            <button class="vexpand" type="button" data-expand="video" aria-label="Agrandar video">
+              <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </button>
+          </div>
+
+          <div class="video-body">
+            <h4>Partido · Video 2</h4>
+            <p>Un partido completo.</p>
+            <div class="video-actions">
+              <a class="btn btn-danger" href="#dev"><i class="fa-solid fa-code"></i> Programación</a>
+              <a class="btn btn-ghost" href="#galeria"><i class="fa-solid fa-images"></i> Fotos</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="video-card reveal">
+          <div class="vwrap">
+            <video class="vid" controls preload="metadata" playsinline poster="">
+              <source src="img/video.mp4">
+            </video>
+            <button class="vexpand" type="button" data-expand="video" aria-label="Agrandar video">
+              <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+            </button>
+          </div>
+
+          <div class="video-body">
+            <h4>Entreno · Video 3</h4>
+            <p>Entrenamientos y progreso.</p>
+            <div class="video-actions">
+              <a class="btn btn-primary" href="#sobre"><i class="fa-solid fa-shield-heart"></i> Historia</a>
+              <a class="btn btn-ghost" href="#contacto"><i class="fa-solid fa-message"></i> Contacto</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="helpMini" style="margin-top:12px;">
+        Tip: poné tus videos en <strong>videos/</strong> y cambiá el <code>src</code>:
+        <code>src="videos/video1.mp4"</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMACIÓN -->
+  <section class="section" id="dev">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Programación</h2>
+          <p class="section-subtitle">Además de arquero, estoy creando esta web yo. 💻🔥</p>
+        </div>
+      </div>
+
+      <div class="dev reveal">
+        <div>
+          <h3><i class="fa-solid fa-code"></i> Yo hice este portfolio</h3>
+          <p>
+            Me gusta aprender a programar y crear cosas que se vean increíbles en el celular.
+            Para mí, programar es como entrenar: práctica, paciencia y seguir mejorando.
+          </p>
+
+          <div class="card" style="margin-top:12px;">
+            <h4><i class="fa-solid fa-graduation-cap" style="color:rgba(47,123,255,.95)"></i> Aprender también es entrenar</h4>
+            <p>Programar = práctica + paciencia. Igual que en el arco.</p>
+            <div class="tags">
+              <span class="tag blue">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag red">JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="codebox" aria-label="Código de ejemplo">
+          <div><span class="k">const</span> ismael = {</div>
+          <div>  nombre: <span class="g">"Ismael Pérez"</span>,</div>
+          <div>  rol: <span class="g">"Arquero"</span>,</div>
+          <div>  edad: <span class="r">12</span>,</div>
+          <div>  soy: [<span class="g">"buena persona"</span>, <span class="g">"empático"</span>, <span class="g">"amigo"</span>],</div>
+          <div>  hago: [<span class="g">"fútbol"</span>, <span class="g">"programación"</span>],</div>
+          <div>  sueño: <span class="g">"Conocer al Dibu Martínez"</span>,</div>
+          <div>  frase: <span class="g">"Yo no me rindo"</span></div>
+          <div>};</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <footer class="footer" id="contacto">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="font-weight:1150; font-size:18px;">Ismael Pérez</div>
+          <div style="color:rgba(8,12,22,.62); font-weight: 1000;">Arquero · Fútbol · Amistad · Programación</div>
+        </div>
+
+        <div class="social">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+
+        <a class="toTop" href="#inicio"><i class="fa-solid fa-arrow-up"></i> Arriba</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-back" data-close="true"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Contenido ampliado">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-media" id="modalMedia"></div>
+      <div class="modal-hint">Tip: tocá afuera o apretá ESC para cerrar</div>
+    </div>
+  </div>
+
+  <script>
+    const $ = (q, el=document) => el.querySelector(q);
+    const $$ = (q, el=document) => Array.from(el.querySelectorAll(q));
+
+    // Menu mobile
+    const nav = $("#nav");
+    const hamburger = $("#hamburger");
+    hamburger.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", String(open));
+    });
+    $$("#nav a").forEach(a => a.addEventListener("click", () => {
+      nav.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+    }));
+
+    // Reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("on"); });
+    }, { threshold: 0.12 });
+    $$(".reveal").forEach(el => io.observe(el));
+
+    // Scoreboard decorativo
+    const scrA = $("#scrA");
+    const scrB = $("#scrB");
+    let a=0, b=0;
+    setInterval(() => {
+      const roll = Math.random();
+      if (roll < 0.25) a = Math.min(3, a + 1);
+      else if (roll < 0.45) b = Math.min(3, b + 1);
+      else if (roll < 0.55) { a=0; b=0; }
+      scrA.textContent = a;
+      scrB.textContent = b;
+    }, 2600);
+
+    // Modal (IMG + VIDEO)
+    const modal = $("#modal");
+    const modalMedia = $("#modalMedia");
+    const modalClose = $("#modalClose");
+
+    function openModalWithImg(src, alt){
+      modalMedia.innerHTML = "";
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = alt || "Imagen ampliada";
+      modalMedia.appendChild(img);
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function openModalWithVideo(src, poster){
+      modalMedia.innerHTML = "";
+      const v = document.createElement("video");
+      v.controls = true;
+      v.playsInline = true;
+      v.preload = "metadata";
+      if (poster) v.poster = poster;
+
+      const s = document.createElement("source");
+      s.src = src;
+      s.type = "video/mp4";
+      v.appendChild(s);
+
+      v.addEventListener("loadedmetadata", () => {
+        try { v.play(); } catch(e) {}
+      });
+
+      modalMedia.appendChild(v);
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal(){
+      const mv = modalMedia.querySelector("video");
+      if (mv) { try { mv.pause(); } catch(e) {} }
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      modalMedia.innerHTML = "";
+    }
+
+    modal.addEventListener("click", (e) => {
+      if (e.target?.dataset?.close === "true") closeModal();
+    });
+    modalClose.addEventListener("click", closeModal);
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+    });
+
+    // Abrir imagen al click
+    $$("#gallery .gitem").forEach(btn => {
+      const img = btn.querySelector("img");
+      btn.addEventListener("click", () => openModalWithImg(img.src, img.alt));
+    });
+
+    // Agrandar video
+    $$(".vexpand").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const card = btn.closest(".video-card");
+        const vid = card.querySelector("video");
+        const src = vid.currentSrc || vid.querySelector("source")?.src;
+        const poster = vid.poster || "";
+        if (src) openModalWithVideo(src, poster);
+      });
+    });
+
+    // Fondo canvas
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    let W, H, particles;
+
+    function resize(){
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      W = canvas.width; H = canvas.height;
+      initParticles(dpr);
+    }
+    window.addEventListener("resize", resize);
+
+    function initParticles(dpr){
+      const count = Math.min(120, Math.floor((window.innerWidth * window.innerHeight) / 18000));
+      particles = Array.from({length:count}, () => ({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        r: (Math.random()*1.6 + 0.6)*dpr,
+        vx: (Math.random()*0.22 - 0.11)*dpr,
+        vy: (Math.random()*0.22 - 0.11)*dpr,
+        a: Math.random()*0.55 + 0.25
+      }));
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+
+      const grd = ctx.createRadialGradient(W*0.20, H*0.18, 0, W*0.20, H*0.18, Math.max(W,H));
+      grd.addColorStop(0, "rgba(47,123,255,0.10)");
+      grd.addColorStop(0.55, "rgba(0,208,255,0.06)");
+      grd.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = grd;
+      ctx.fillRect(0,0,W,H);
+
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < -40) p.x = W + 40;
+        if (p.x > W + 40) p.x = -40;
+        if (p.y < -40) p.y = H + 40;
+        if (p.y > H + 40) p.y = -40;
+
+        ctx.globalAlpha = p.a;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = "rgba(255,255,255,0.95)";
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+  </script>
+</body>
+</html>
