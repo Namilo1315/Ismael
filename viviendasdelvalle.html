@@ -1,0 +1,1979 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Viviendas del Valle · Viviendas Industrializadas de Construcción Mixta</title>
+  <meta name="description" content="Accedé hoy a tu vivienda con paredes de ladrillos 100% financiada. Empresa Neuquina, especialistas en viviendas mixtas con paredes exteriores de ladrillo." />
+  <meta name="theme-color" content="#d62828" />
+
+  <!-- Open Graph -->
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Viviendas del Valle · Viviendas con paredes de ladrillo" />
+  <meta property="og:description" content="Accedé hoy a tu vivienda con paredes de ladrillos 100% financiada. Financiación propia, sin sorteos. Contactanos." />
+  <meta property="og:url" content="https://viviendasdelvalle.com.ar/" />
+  <meta property="og:image" content="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_36.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      /* Light theme */
+      --bg:#ffffff;
+      --paper:#ffffff;
+      --ink:#0f172a;        /* slate-900 */
+      --muted:#334155;      /* slate-700 */
+      --muted2:#64748b;     /* slate-500 */
+      --stroke:#e5e7eb;     /* gray-200 */
+      --stroke2:#eef2f7;
+
+      --red:#d62828;
+      --red2:#ff3b3b;
+
+      --shadow: 0 18px 40px rgba(2,6,23,.10);
+      --shadow2: 0 10px 22px rgba(2,6,23,.08);
+
+      --radius:18px;
+      --radius2:24px;
+      --max:1180px;
+
+      --ease: cubic-bezier(.2,.9,.2,1);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      -webkit-text-size-adjust: 100%;
+      background:
+        radial-gradient(900px 500px at 10% 5%, rgba(214,40,40,.10), transparent 60%),
+        radial-gradient(800px 450px at 90% 10%, rgba(15,23,42,.05), transparent 55%),
+        linear-gradient(180deg, #ffffff 0%, #fbfbfd 40%, #ffffff 100%);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    img, iframe, video, object, embed{ max-width:100%; display:block; }
+    .wrap{ width:min(var(--max), 92vw); margin-inline:auto; }
+
+    /* Improve anchor positions with sticky header */
+    section{ scroll-margin-top: 84px; }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+      min-height: 68px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 220px;
+    }
+    .brand img{
+      height:40px; width:auto;
+      filter: drop-shadow(0 10px 18px rgba(2,6,23,.10));
+    }
+    .brand .tag{
+      display:flex; flex-direction:column; line-height:1.05;
+    }
+    .brand .tag b{ font-size:14px; letter-spacing:.2px; }
+    .brand .tag span{ font-size:12px; color: var(--muted2); }
+
+    .menu{
+      display:flex; align-items:center; gap:18px;
+      color: var(--muted);
+      font-size:14px;
+      flex: 1 1 auto;
+      justify-content:center;
+    }
+    .menu a{
+      opacity:.95;
+      transition: opacity .25s var(--ease), transform .25s var(--ease);
+      white-space: nowrap;
+    }
+    .menu a:hover{ opacity:1; transform: translateY(-1px); }
+
+    .nav-cta{ display:flex; align-items:center; gap:10px; flex: 0 0 auto; }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.80);
+      color: var(--ink);
+      font-weight:800;
+      letter-spacing:.2px;
+      box-shadow: var(--shadow2);
+      transition: transform .22s var(--ease), background .22s var(--ease), border-color .22s var(--ease);
+      user-select:none;
+      white-space: nowrap;
+      cursor:pointer;
+    }
+    .btn:hover{ transform: translateY(-1px); background: #fff; border-color: #d1d5db; }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--red) 0%, var(--red2) 100%);
+      border-color: rgba(214,40,40,.25);
+      color:#fff;
+    }
+    .btn.primary:hover{ transform: translateY(-1px) scale(1.01); }
+    .btn.ghost{
+      background: rgba(255,255,255,.75);
+      box-shadow:none;
+    }
+
+    /* Hamburguesa más prolija */
+    .hamb{
+      display:none;
+      width:42px; height:42px;
+      border-radius: 14px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.85);
+      align-items:center; justify-content:center;
+      cursor:pointer;
+      box-shadow: var(--shadow2);
+    }
+    .hamb span{
+      width:18px; height:2px; background: rgba(15,23,42,.85);
+      position:relative;
+      border-radius: 99px;
+    }
+    .hamb span:before,.hamb span:after{
+      content:""; position:absolute; left:0; width:18px; height:2px; background: rgba(15,23,42,.85);
+      border-radius: 99px;
+    }
+    .hamb span:before{ top:-6px; }
+    .hamb span:after{ top:6px; }
+
+    /* Mobile drawer */
+    .drawer-overlay{
+      position:fixed; inset:0; background: rgba(2,6,23,.45);
+      opacity:0; pointer-events:none;
+      transition: opacity .25s var(--ease);
+      z-index:60;
+    }
+    .drawer{
+      position:fixed; top:0; right:0; height:100%;
+      width:min(380px, 90vw);
+      background: rgba(255,255,255,.96);
+      border-left:1px solid var(--stroke);
+      transform: translateX(105%);
+      transition: transform .32s var(--ease);
+      z-index:61;
+      padding:18px;
+    }
+    .drawer.open{ transform: translateX(0); }
+    .drawer-overlay.open{ opacity:1; pointer-events:auto; }
+    .drawer-head{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom: 12px;
+    }
+    .drawer-head b{ font-size:14px; color: var(--muted); }
+    .drawer-close{
+      width:40px; height:40px; border-radius: 14px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.90);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer;
+      box-shadow: var(--shadow2);
+    }
+    .drawer-close svg{ width:18px; height:18px; fill: rgba(15,23,42,.85); }
+    .drawer-links{
+      display:flex; flex-direction:column; gap:10px;
+      padding:10px 0 16px;
+    }
+    .drawer-links a{
+      padding:12px 12px;
+      border-radius: 16px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.85);
+      color: var(--ink);
+      font-weight:800;
+      box-shadow: var(--shadow2);
+    }
+    .drawer .drawer-cta{
+      display:flex; flex-direction:column; gap:10px;
+      padding-top:12px;
+      border-top:1px solid var(--stroke);
+    }
+
+    /* Hero */
+    .hero{ padding: 52px 0 22px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.85);
+      color: var(--muted);
+      font-size:13px;
+      width: fit-content;
+      box-shadow: var(--shadow2);
+    }
+    .pill .dot{
+      width:8px; height:8px; border-radius: 99px;
+      background: linear-gradient(135deg, var(--red) 0%, var(--red2) 100%);
+      box-shadow: 0 0 0 6px rgba(214,40,40,.10);
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(30px, 4.2vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+    }
+    .accent{
+      color: var(--red);
+      text-shadow: 0 14px 34px rgba(214,40,40,.12);
+    }
+    .sub{
+      color: var(--muted);
+      font-size: clamp(15px, 1.6vw, 18px);
+      line-height:1.55;
+      max-width: 60ch;
+    }
+    .hero-actions{
+      display:flex; flex-wrap:wrap; gap:12px;
+      margin-top: 18px;
+    }
+
+    .trust{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top: 18px;
+      color: var(--muted2);
+      font-size:13px;
+    }
+    .trust .chip{
+      display:flex; gap:10px; align-items:center;
+      padding:10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow2);
+    }
+    .ico{
+      width:22px; height:22px; border-radius: 9px;
+      background: rgba(214,40,40,.10);
+      border:1px solid rgba(214,40,40,.18);
+      display:flex; align-items:center; justify-content:center;
+      flex: 0 0 auto;
+    }
+    .ico svg{ width:14px; height:14px; fill: rgba(214,40,40,.95); }
+
+    /* Lead card / form */
+    .lead{
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      transform-style: preserve-3d;
+    }
+    .lead:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(540px 240px at 20% 0%, rgba(214,40,40,.12), transparent 60%),
+        radial-gradient(520px 280px at 90% 10%, rgba(15,23,42,.06), transparent 55%);
+      pointer-events:none;
+      opacity: .9;
+    }
+    .lead-inner{ position:relative; padding: 18px; }
+    .lead h3{ margin: 0 0 8px; font-size: 18px; letter-spacing: -.2px; }
+    .lead p{ margin: 0 0 12px; color: var(--muted); font-size: 14px; line-height:1.45; }
+
+    .form{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .field{ display:flex; flex-direction:column; gap:6px; }
+    .field.full{ grid-column: 1 / -1; }
+
+    label{ font-size:12px; color: var(--muted2); font-weight:800; }
+
+    input, select, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border:1px solid var(--stroke);
+      background: #fff;
+      color: var(--ink);
+      outline:none;
+      transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+      font-family: inherit;
+      font-size: 14px;
+    }
+    textarea{ min-height: 92px; resize: vertical; }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(214,40,40,.55);
+      box-shadow: 0 0 0 4px rgba(214,40,40,.12);
+    }
+
+    .form-actions{
+      grid-column: 1 / -1;
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 4px;
+    }
+    .mini{
+      margin-top: 10px;
+      color: var(--muted2);
+      font-size:12px;
+      line-height:1.45;
+    }
+
+    /* Sections */
+    section{ padding: 28px 0; }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: clamp(20px, 2.6vw, 30px);
+      letter-spacing:-.4px;
+    }
+    .section-head p{
+      margin:6px 0 0;
+      color: var(--muted);
+      max-width: 62ch;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--stroke);
+      box-shadow: var(--shadow2);
+      padding: 16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(520px 220px at 15% 0%, rgba(214,40,40,.10), transparent 60%),
+        radial-gradient(520px 240px at 95% 20%, rgba(15,23,42,.05), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .card > *{ position:relative; }
+    .card h4{ margin: 10px 0 6px; font-size: 15px; }
+    .card p{ margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+    .badge-ico{
+      width:44px; height:44px; border-radius: 16px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(214,40,40,.10);
+      border:1px solid rgba(214,40,40,.18);
+      box-shadow: 0 12px 22px rgba(2,6,23,.08);
+      flex: 0 0 auto;
+    }
+    .badge-ico svg{ width:20px; height:20px; fill: rgba(214,40,40,.95); }
+
+    /* ✅ NUEVA GALERÍA: imágenes chicas una al lado de la otra */
+    .thumb-carousel{
+      border-radius: var(--radius2);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      padding: 14px;
+    }
+    .thumb-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 10px;
+    }
+    .thumb-title{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width: 0;
+    }
+    .thumb-title b{ font-size: 14px; letter-spacing:-.15px; }
+    .thumb-title span{ font-size: 12px; color: var(--muted2); }
+
+    .thumb-ctrl{
+      display:flex;
+      gap:10px;
+      flex: 0 0 auto;
+    }
+    .thumb-btn{
+      width:42px; height:42px;
+      border-radius: 14px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.88);
+      box-shadow: var(--shadow2);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer;
+      transition: transform .2s var(--ease), background .2s var(--ease);
+    }
+    .thumb-btn:hover{ transform: translateY(-1px); background:#fff; }
+    .thumb-btn svg{ width:18px; height:18px; fill: rgba(15,23,42,.9); }
+
+    .thumb-track{
+      display:flex;
+      gap:12px;
+      overflow:auto;
+      padding-bottom: 4px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .thumb-track::-webkit-scrollbar{ height: 10px; }
+    .thumb-track::-webkit-scrollbar-thumb{
+      background: rgba(15,23,42,.10);
+      border-radius: 999px;
+      border: 3px solid rgba(255,255,255,.92);
+    }
+
+    .thumb{
+      flex: 0 0 260px;
+      scroll-snap-align: start;
+      border-radius: 18px;
+      border:1px solid var(--stroke);
+      background: #0b0c10;
+      overflow:hidden;
+      position:relative;
+      box-shadow: 0 12px 22px rgba(2,6,23,.08);
+      cursor:pointer;
+      padding:0;
+    }
+    .thumb img{
+      width:100%;
+      height: 160px;
+      object-fit: cover;
+      transform: scale(1.01);
+      filter: saturate(1.02) contrast(1.03);
+    }
+    .thumb .cap{
+      position:absolute;
+      left:10px; right:10px; bottom:10px;
+      padding:10px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.88);
+      border:1px solid rgba(255,255,255,.90);
+      color: rgba(15,23,42,.92);
+      font-weight:900;
+      font-size: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 24px rgba(2,6,23,.12);
+    }
+
+    /* Lightbox (al tocar una foto) */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index: 120;
+      padding: 18px;
+    }
+    .lightbox.open{ display:flex; }
+    .lightbox-bg{
+      position:absolute; inset:0;
+      background: rgba(2,6,23,.62);
+      backdrop-filter: blur(8px);
+    }
+    .lightbox-card{
+      position:relative;
+      width:min(980px, 94vw);
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow: 0 24px 70px rgba(2,6,23,.40);
+      background: #0b0c10;
+    }
+    .lightbox-card img{
+      width:100%;
+      height: auto;
+      max-height: 82vh;
+      object-fit: contain;
+      background: #0b0c10;
+    }
+    .lightbox-close{
+      position:absolute;
+      top:12px; right:12px;
+      width:44px; height:44px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.24);
+      background: rgba(255,255,255,.16);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer;
+      transition: transform .2s var(--ease), background .2s var(--ease);
+    }
+    .lightbox-close:hover{ transform: translateY(-1px); background: rgba(255,255,255,.22); }
+    .lightbox-close svg{ width:18px; height:18px; fill:#fff; }
+
+    /* CTA banner (cartel “¿Qué estás esperando?”) */
+    .cta-banner{
+      border-radius: var(--radius2);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.94);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      padding: 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .cta-banner:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(620px 240px at 15% 0%, rgba(214,40,40,.12), transparent 60%),
+        radial-gradient(520px 240px at 95% 20%, rgba(15,23,42,.05), transparent 60%);
+      opacity:.9; pointer-events:none;
+    }
+    .cta-banner > *{ position:relative; }
+    .cta-left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+    .cta-logo{
+      width:52px;
+      height:auto;
+      filter: drop-shadow(0 14px 26px rgba(2,6,23,.12));
+    }
+    .cta-text{
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+      min-width:0;
+    }
+    .cta-text b{
+      font-size: 16px;
+      letter-spacing:-.2px;
+    }
+    .cta-text span{
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.45;
+    }
+
+    /* MODELOS */
+    .models{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .model-card{
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.94);
+      border:1px solid var(--stroke);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      min-height: 340px;
+    }
+    .model-card:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(520px 240px at 18% 0%, rgba(214,40,40,.10), transparent 60%),
+        radial-gradient(520px 240px at 90% 10%, rgba(15,23,42,.05), transparent 60%);
+      opacity:.9; pointer-events:none;
+    }
+    .model-card > *{ position:relative; }
+
+    .model-top{
+      padding: 14px 14px 10px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .model-title{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      min-width: 0;
+    }
+    .model-title b{ font-size:15px; letter-spacing:-.15px; }
+    .model-title span{ color: var(--muted); font-size: 13px; line-height:1.4; }
+
+    .tag-mini{
+      font-size:12px;
+      font-weight:900;
+      color: rgba(214,40,40,.95);
+      background: rgba(214,40,40,.10);
+      border:1px solid rgba(214,40,40,.18);
+      padding:7px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+
+    .model-preview{
+      margin: 0 14px 12px;
+      border-radius: 18px;
+      border:1px solid var(--stroke);
+      overflow:hidden;
+      background: linear-gradient(180deg, #ffffff, #f7f8fb);
+      box-shadow: 0 12px 22px rgba(2,6,23,.08);
+      aspect-ratio: 16/10;
+      position:relative;
+    }
+    .model-preview iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      background: #fff;
+    }
+
+    /* fallback */
+    .model-preview .fallback{
+      display:none;
+      position:absolute;
+      inset:0;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+      text-align:center;
+      color: var(--muted);
+      font-size:13px;
+      background: linear-gradient(180deg, #ffffff, #f7f8fb);
+    }
+    .model-preview.is-fallback .fallback{ display:flex; }
+    .model-preview.is-fallback iframe{ display:none; }
+
+    .model-preview .tap{
+      position:absolute;
+      right:10px; bottom:10px;
+      padding:9px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow2);
+      font-size:12px;
+      font-weight:900;
+      display:none;
+      align-items:center;
+      gap:8px;
+      z-index: 2;
+    }
+    .model-preview .tap svg{ width:16px; height:16px; fill: rgba(15,23,42,.85); }
+
+    .model-actions{
+      margin-top:auto;
+      padding: 0 14px 14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn.small{
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight:900;
+    }
+    .btn.wp{
+      background: linear-gradient(135deg, #25D366 0%, #13b14f 100%);
+      border-color: rgba(19,177,79,.25);
+      color:#fff;
+    }
+    .btn.wp:hover{ transform: translateY(-1px) scale(1.01); }
+
+    /* FAQ */
+    .faq{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+      align-items:start;
+    }
+    .faq .faqcol{ display:flex; flex-direction:column; gap: 10px; }
+    .qa{
+      border-radius: var(--radius);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.92);
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+    }
+    .q{
+      width:100%;
+      text-align:left;
+      padding: 14px 14px;
+      background: transparent;
+      color: var(--ink);
+      border:0;
+      cursor:pointer;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      font-weight:900;
+      letter-spacing: -.1px;
+    }
+    .q span{ color: var(--muted2); font-weight:800; font-size: 13px; display:none; }
+    .chev{
+      width:34px; height:34px;
+      border-radius: 12px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.90);
+      display:flex; align-items:center; justify-content:center;
+      flex: 0 0 auto;
+      transition: transform .28s var(--ease);
+      box-shadow: var(--shadow2);
+    }
+    .chev svg{ width:16px; height:16px; fill: rgba(15,23,42,.9); }
+    .a{
+      max-height:0;
+      overflow:hidden;
+      transition: max-height .35s var(--ease);
+    }
+    .a > div{
+      padding: 0 14px 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .qa.open .a{ max-height: 420px; }
+    .qa.open .chev{ transform: rotate(180deg); }
+
+    /* Testimonials */
+    .testi{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+    }
+    .quote{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--stroke);
+      padding: 16px;
+      position:relative;
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+    }
+    .quote:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(560px 260px at 10% 0%, rgba(214,40,40,.10), transparent 60%);
+      opacity:.9; pointer-events:none;
+    }
+    .quote > *{ position:relative; }
+    .quote p{ margin:0 0 12px; color: var(--muted); line-height:1.55; }
+    .who{ display:flex; align-items:center; gap:10px; margin-top: 6px; }
+    .avatar{
+      width:42px; height:42px; border-radius: 16px;
+      border:1px solid var(--stroke);
+      overflow:hidden;
+      background: rgba(255,255,255,.90);
+    }
+    .avatar img{ width:100%; height:100%; object-fit:cover; }
+    .who b{ font-size: 14px; display:block; }
+    .who span{ color: var(--muted2); font-size:12px; display:block; margin-top:2px; }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+    .contact .box{
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--stroke);
+      box-shadow: var(--shadow2);
+      padding: 16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .contact .box:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(560px 260px at 10% 0%, rgba(214,40,40,.10), transparent 60%);
+      opacity:.9; pointer-events:none;
+    }
+    .contact .box > *{ position:relative; }
+    .info{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .infocard{
+      border-radius: 16px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.90);
+      padding: 12px;
+      display:flex; gap:10px; align-items:flex-start;
+      box-shadow: var(--shadow2);
+    }
+    .infocard b{ display:block; margin-bottom: 4px; }
+    .infocard p{ margin:0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+    .map{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow2);
+    }
+    .map iframe{
+      width:100%;
+      height:100%;
+      min-height: 340px;
+      border:0;
+    }
+
+    footer{
+      padding: 28px 0 88px;
+      color: var(--muted2);
+      border-top:1px solid var(--stroke);
+      margin-top: 20px;
+    }
+    .foot{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+
+    /* Floating WhatsApp */
+    .wa-float{
+      position:fixed;
+      right: calc(16px + env(safe-area-inset-right));
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      z-index:80;
+      display:flex;
+      align-items:flex-end;
+    }
+    .wa{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 13px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #25D366 0%, #13b14f 100%);
+      color: white;
+      font-weight:900;
+      box-shadow: 0 18px 40px rgba(2,6,23,.18);
+      border:1px solid rgba(255,255,255,.30);
+      transform: translateZ(0);
+      position:relative;
+      overflow:hidden;
+      transition: transform .22s var(--ease);
+    }
+    .wa:hover{ transform: translateY(-2px); }
+    .wa:before{
+      content:"";
+      position:absolute; inset:-40px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 60%);
+      transform: rotate(20deg);
+      opacity:.75;
+      pointer-events:none;
+      animation: shine 3.5s var(--ease) infinite;
+    }
+    @keyframes shine{
+      0%,100%{ transform: translateX(-12px) rotate(20deg); opacity:.55; }
+      50%{ transform: translateX(22px) rotate(20deg); opacity:.85; }
+    }
+    .wa svg{ width:18px; height:18px; fill:white; }
+
+    /* Reveal */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .75s var(--ease), transform .75s var(--ease);
+      will-change: transform, opacity;
+    }
+    .reveal.in{ opacity:1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .faq{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .models{ grid-template-columns: 1fr; }
+      .testi{ grid-template-columns: 1fr; }
+      .menu{ display:none; }
+      .hamb{ display:flex; }
+      .brand{ min-width: auto; }
+      .form{ grid-template-columns: 1fr; }
+    }
+
+    /* ✅ Extra ajuste fino para CELULAR */
+    @media (max-width: 560px){
+      .wrap{ width:min(var(--max), 94vw); }
+      section{ padding: 22px 0; }
+      .hero{ padding: 36px 0 10px; }
+
+      /* Header SOLO: logo + “construcción mixta” + hamburguesa */
+      .nav{ padding:10px 0; gap:10px; }
+      .brand{ gap:10px; }
+      .brand img{ height:34px; }
+      .brand .tag b{ display:none; }            /* oculto “Viviendas del Valle” */
+      .brand .tag span{ font-size:12px; }       /* dejo “Construcción mixta…” */
+
+      .nav-cta .btn.primary{ display:none; }    /* oculto botón grande en header */
+      .btn{ padding:10px 12px; font-size:13px; }
+
+      /* hamburguesa más chica */
+      .hamb{ width:38px; height:38px; border-radius: 12px; }
+      .hamb span, .hamb span:before, .hamb span:after{ width:16px; }
+      .hamb span:before{ top:-5px; }
+      .hamb span:after{ top:5px; }
+
+      /* Centrado pro en mobile */
+      .pill{ margin-inline:auto; }
+      .hero .reveal{ text-align:center; }
+      .sub{ margin-inline:auto; }
+      .hero-actions{ justify-content:center; }
+      .trust{ justify-content:center; }
+      .trust .chip{ width:100%; }
+
+      .section-head{ text-align:center; flex-direction:column; align-items:center; }
+      .section-head p{ margin-inline:auto; }
+
+      .thumb-head{ flex-direction:column; align-items:flex-start; }
+      .thumb-ctrl{ width:100%; justify-content:flex-end; }
+
+      .thumb{ flex-basis: 240px; }
+      .thumb img{ height: 150px; }
+
+      .model-preview{ aspect-ratio: 4/3; }
+      .model-preview .tap{ display:inline-flex; }
+      .model-actions{ flex-direction:column; }
+      .btn.small{ width:100%; }
+
+      .cta-banner{ flex-direction:column; align-items:flex-start; }
+      .cta-left{ width:100%; }
+      .cta-banner .btn{ width:100%; }
+
+      .wa{ padding: 12px 13px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; scroll-behavior:auto !important; }
+      .reveal{ opacity:1 !important; transform:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Viviendas del Valle">
+          <img src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/10/logo_350x70.png" alt="Viviendas del Valle" />
+          <div class="tag">
+            <b>Viviendas del Valle</b>
+            <span>Construcción mixta · paredes de ladrillo</span>
+          </div>
+        </a>
+
+        <nav class="menu" aria-label="Secciones">
+          <a href="#beneficios">Beneficios</a>
+          <a href="#galeria">Galería</a>
+          <a href="#modelos">Modelos</a>
+          <a href="#faq">Preguntas</a>
+          <a href="#testimonios">Testimonios</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a class="btn primary" href="#asesor">Quiero un asesor</a>
+
+          <button class="hamb" id="hamb" aria-label="Abrir menú" aria-controls="drawer" aria-expanded="false">
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer -->
+  <div class="drawer-overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Menú móvil">
+    <div class="drawer-head">
+      <b>Menú</b>
+      <div class="drawer-close" id="closeDrawer" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.3 5.7a1 1 0 0 0-1.4 0L12 10.6 7.1 5.7A1 1 0 0 0 5.7 7.1l4.9 4.9-4.9 4.9a1 1 0 1 0 1.4 1.4l4.9-4.9 4.9 4.9a1 1 0 0 0 1.4-1.4L13.4 12l4.9-4.9a1 1 0 0 0 0-1.4z"/></svg>
+      </div>
+    </div>
+
+    <div class="drawer-links">
+      <a href="#beneficios" class="drawerLink">Beneficios</a>
+      <a href="#galeria" class="drawerLink">Galería</a>
+      <a href="#modelos" class="drawerLink">Modelos</a>
+      <a href="#faq" class="drawerLink">Preguntas frecuentes</a>
+      <a href="#testimonios" class="drawerLink">Testimonios</a>
+      <a href="#contacto" class="drawerLink">Contacto</a>
+    </div>
+
+    <div class="drawer-cta">
+      <a class="btn primary" href="#asesor" id="drawerCta">Quiero un asesor</a>
+      <a class="btn ghost" href="#contacto" id="drawerContact">Ver datos de contacto</a>
+    </div>
+  </aside>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="pill">
+            <span class="dot"></span>
+            <span>Financiación propia · sin sorteos · asesoría inmediata</span>
+          </div>
+
+          <h1>
+            Accedé a tu casa propia con <span class="accent">paredes de ladrillo</span>
+            y construcción mixta.
+          </h1>
+
+          <p class="sub">
+            Somos una empresa neuquina, especialistas en viviendas industrializadas de construcción mixta:
+            exterior sólido en ladrillo y divisiones interiores con placas de yeso sobre estructura.
+            Diseñadas para adaptarse a distintos climas y terrenos.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#asesor">
+              <span>Quiero un asesor</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:#fff">
+                <path d="M13 5a1 1 0 0 0 0 2h3.59L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.41V12a1 1 0 1 0 2 0V5h-7z"/>
+                <path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 0 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/>
+              </svg>
+            </a>
+            <a class="btn ghost" href="#modelos">Ver modelos</a>
+          </div>
+
+          <div class="trust">
+            <div class="chip">
+              <div class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2 3 7v6c0 5 3.8 9.4 9 9.9 5.2-.5 9-4.9 9-9.9V7l-9-5zm-1 16-4-4 1.4-1.4L11 14.2l5.6-5.6L18 10l-7 8z"/></svg>
+              </div>
+              <span>Construcción mixta · exterior ladrillo</span>
+            </div>
+            <div class="chip">
+              <div class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 2a1 1 0 0 0-1 1v2H5a2 2 0 0 0-2 2v1h18V7a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v2H8V3a1 1 0 0 0-1-1zm14 8H3v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9z"/></svg>
+              </div>
+              <span>Entrega a partir de cuota 40</span>
+            </div>
+            <div class="chip">
+              <div class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm1 17.9V19a1 1 0 1 1-2 0v-.1a3.6 3.6 0 0 1-2.9-2.3 1 1 0 1 1 1.9-.6c.2.6.8 1.1 1.6 1.1h1c.9 0 1.6-.6 1.6-1.3 0-.8-.6-1.2-2-1.6l-.5-.1c-1.9-.5-3.5-1.3-3.5-3.4 0-1.7 1.2-3 2.8-3.4V5a1 1 0 1 1 2 0v.1c1.2.3 2.2 1.1 2.6 2.3a1 1 0 0 1-1.9.6c-.2-.6-.7-1-1.5-1h-.7c-.9 0-1.6.5-1.6 1.2 0 .7.6 1 1.9 1.4l.5.1c2.1.6 3.7 1.4 3.7 3.6 0 1.7-1.2 3.1-3 3.4z"/></svg>
+              </div>
+              <span>Cuotas fijas en pesos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lead reveal" id="asesor" aria-label="Formulario de contacto rápido">
+          <div class="lead-inner">
+            <h3>Te llamamos inmediatamente</h3>
+            <p>Completá tus datos y abrimos WhatsApp con el mensaje listo para enviar a un asesor.</p>
+
+            <form class="form" id="leadForm">
+              <div class="field">
+                <label for="name">Nombre</label>
+                <input id="name" name="name" type="text" placeholder="Tu nombre" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">Teléfono</label>
+                <input id="phone" name="phone" type="tel" placeholder="Ej: 299 123 4567" required />
+              </div>
+
+              <div class="field full">
+                <label for="city">Ciudad / Provincia</label>
+                <input id="city" name="city" type="text" placeholder="Ej: Neuquén, Neuquén" />
+              </div>
+
+              <div class="field">
+                <label for="model">Modelo</label>
+                <select id="model" name="model">
+                  <option value="No definido">Quiero asesoramiento</option>
+                  <option value="Tipo 1">Tipo 1</option>
+                  <option value="Tipo 2">Tipo 2</option>
+                  <option value="Tipo 3">Tipo 3</option>
+                  <option value="Tipo 3 Garage">Tipo 3 Garage</option>
+                  <option value="Tipo 4">Tipo 4</option>
+                  <option value="Tipo 4 Garage">Tipo 4 Garage</option>
+                  <option value="Tipo 5">Tipo 5</option>
+                  <option value="Tipo 7 Garage">Tipo 7 Garage</option>
+                  <option value="Tipo 9">Tipo 9</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="bedrooms">Dormitorios</label>
+                <select id="bedrooms" name="bedrooms">
+                  <option value="No definido">No definido</option>
+                  <option value="1 dormitorio">1 dormitorio</option>
+                  <option value="2 dormitorios">2 dormitorios</option>
+                  <option value="3 dormitorios">3 dormitorios</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="msg">Mensaje</label>
+                <textarea id="msg" name="msg" placeholder="Contanos qué estás buscando (ej: terreno, medidas aproximadas, etc.)"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn primary" type="submit">
+                  Enviar por WhatsApp
+                  <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:#fff">
+                    <path d="M13 5a1 1 0 0 0 0 2h3.59L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.41V12a1 1 0 1 0 2 0V5h-7z"/>
+                    <path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 0 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/>
+                  </svg>
+                </button>
+                <a class="btn ghost" href="#contacto" type="button">Ver teléfonos</a>
+              </div>
+
+              <div class="mini">
+                Tip: Si preferís, podés tocar el botón flotante de WhatsApp abajo a la derecha.
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Beneficios -->
+  <section id="beneficios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <h2>Por qué elegir Viviendas del Valle</h2>
+          <p>Viviendas industrializadas de construcción mixta: combinación inteligente de materiales y técnica para lograr solidez, confort y rapidez.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="badge-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2 4 7v6c0 4.7 3.2 8.9 8 9.9 4.8-1 8-5.2 8-9.9V7l-8-5zm-1 14-3-3 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7z"/></svg>
+          </div>
+          <h4>Estructura exterior sólida</h4>
+          <p>Paredes exteriores en ladrillo (con espesor total aprox. 30 cm), diseñadas para una casa robusta y durable.</p>
+        </div>
+
+        <div class="card reveal" style="transition-delay:.06s">
+          <div class="badge-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20 8h-3V6a5 5 0 0 0-10 0v2H4a2 2 0 0 0-2 2v9h20v-9a2 2 0 0 0-2-2zm-11 0V6a3 3 0 1 1 6 0v2H9z"/></svg>
+          </div>
+          <h4>Confort interior eficiente</h4>
+          <p>Divisiones interiores con placas de yeso instaladas sobre bastidores de madera, optimizando terminaciones y aislación.</p>
+        </div>
+
+        <div class="card reveal" style="transition-delay:.12s">
+          <div class="badge-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 4h10l2 5-7 2v11l-2-1-2 1V11L1 9l2-5h4zm1.2 2L7 8.7 12 10l5-1.3L15.8 6H8.2z"/></svg>
+          </div>
+          <h4>Financiación propia</h4>
+          <p>Sin sorteos. Te asesoramos para que elijas el modelo ideal según tus necesidades de espacio y presupuesto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ CTA “¿Qué estás esperando?” -->
+  <section id="cta">
+    <div class="wrap">
+      <div class="cta-banner reveal" aria-label="Llamado a la acción">
+        <div class="cta-left">
+          <img class="cta-logo" src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/10/logo_350x70.png" alt="Logo Viviendas del Valle">
+          <div class="cta-text">
+            <b>¿Qué estás esperando?</b>
+            <span>Dejá de soñarlo y hacelo realidad. Hablá con un asesor y te guiamos en todo el proceso.</span>
+          </div>
+        </div>
+        <a class="btn primary" href="#asesor">Quiero mi asesor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería (thumbs) -->
+  <section id="galeria">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <h2>Galería</h2>
+          <p>Imágenes chicas, una al lado de la otra (podés deslizar). Tocá una foto para verla grande.</p>
+        </div>
+      </div>
+
+      <div class="thumb-carousel reveal" aria-label="Galería en miniaturas">
+        <div class="thumb-head">
+          <div class="thumb-title">
+            <b>Deslizá la galería</b>
+            <span>Tip: con las flechas o arrastrando con el dedo</span>
+          </div>
+          <div class="thumb-ctrl" aria-label="Controles de galería">
+            <button class="thumb-btn" id="gPrev" type="button" aria-label="Anterior">
+              <svg viewBox="0 0 24 24"><path d="M15.4 4.6a1 1 0 0 1 0 1.4L10.4 11l5 5a1 1 0 1 1-1.4 1.4l-5.7-5.7a1 1 0 0 1 0-1.4L14 4.6a1 1 0 0 1 1.4 0z"/></svg>
+            </button>
+            <button class="thumb-btn" id="gNext" type="button" aria-label="Siguiente">
+              <svg viewBox="0 0 24 24"><path d="M8.6 19.4a1 1 0 0 1 0-1.4l5-5-5-5A1 1 0 1 1 10 6.2l5.7 5.7a1 1 0 0 1 0 1.4L10 19.4a1 1 0 0 1-1.4 0z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ✅ 6 imágenes (reemplazá URLs cuando quieras) -->
+        <div class="thumb-track" id="thumbTrack">
+          <button class="thumb" type="button" data-full="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_36.jpg" aria-label="Ver imagen 1">
+            <img src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_36.jpg" alt="Vivienda 1" />
+            <div class="cap">Modelo 36 m² · construcción mixta</div>
+          </button>
+
+          <button class="thumb" type="button" data-full="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_45.jpg" aria-label="Ver imagen 2">
+            <img src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_45.jpg" alt="Vivienda 2" />
+            <div class="cap">Modelo 45 m² · terminaciones prolijas</div>
+          </button>
+
+          <button class="thumb" type="button" data-full="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_45_b.jpg" aria-label="Ver imagen 3">
+            <img src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_45_b.jpg" alt="Vivienda 3" />
+            <div class="cap">Diseños adaptables · varios modelos</div>
+          </button>
+
+          <!-- Si no tenés otras URLs, dejé 3 más repetidas (cambiás después) -->
+          <button class="thumb" type="button" data-full="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_36.jpg" aria-label="Ver imagen 4">
+            <img src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_36.jpg" alt="Vivienda 4" />
+            <div class="cap">Exterior ladrillo · sólida y durable</div>
+          </button>
+
+          <button class="thumb" type="button" data-full="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_45.jpg" aria-label="Ver imagen 5">
+            <img src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_45.jpg" alt="Vivienda 5" />
+            <div class="cap">Interior eficiente · confort</div>
+          </button>
+
+          <button class="thumb" type="button" data-full="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_45_b.jpg" aria-label="Ver imagen 6">
+            <img src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/sli_45_b.jpg" alt="Vivienda 6" />
+            <div class="cap">Financiación propia · sin sorteos</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-bg" id="lightboxBg"></div>
+    <div class="lightbox-card" role="dialog" aria-label="Imagen ampliada">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24"><path d="M18.3 5.7a1 1 0 0 0-1.4 0L12 10.6 7.1 5.7A1 1 0 0 0 5.7 7.1l4.9 4.9-4.9 4.9a1 1 0 1 0 1.4 1.4l4.9-4.9 4.9 4.9a1 1 0 0 0 1.4-1.4L13.4 12l4.9-4.9a1 1 0 0 0 0-1.4z"/></svg>
+      </button>
+      <img id="lightboxImg" src="" alt="Imagen ampliada" />
+    </div>
+  </div>
+
+  <!-- Modelos -->
+  <section id="modelos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <h2>Modelos disponibles</h2>
+          <p>Elegí un plano técnico para ver detalles. Si no sabés cuál te conviene, pedí asesoramiento y te guiamos.</p>
+        </div>
+      </div>
+
+      <div class="models">
+        <!-- Tipo 1 -->
+        <article class="model-card reveal">
+          <div class="model-top">
+            <div class="model-title">
+              <b>Plano Tipo 1</b>
+              <span>Modelo base · ideal para empezar.</span>
+            </div>
+            <span class="tag-mini">Más consultado</span>
+          </div>
+          <div class="model-preview" aria-label="Vista previa del plano Tipo 1">
+            <iframe title="Plano Tipo 1" loading="lazy"
+              data-pdf="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/1-Plano-tecnico-Tipo-1.pdf"></iframe>
+            <div class="fallback">No se pudo cargar la vista previa. Tocá “Ver plano (PDF)”.</div>
+            <a class="tap" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M13 5a1 1 0 0 0 0 2h3.6L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.4V12a1 1 0 1 0 2 0V5h-7z"/><path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 1 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/></svg>
+              Abrir
+            </a>
+          </div>
+          <div class="model-actions">
+            <a class="btn small ghost" href="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/1-Plano-tecnico-Tipo-1.pdf" target="_blank" rel="noopener">Ver plano (PDF)</a>
+            <button class="btn small wp js-model-wa" data-model="Tipo 1" type="button">Consultar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Tipo 2 -->
+        <article class="model-card reveal" style="transition-delay:.06s">
+          <div class="model-top">
+            <div class="model-title">
+              <b>Plano Tipo 2</b>
+              <span>Distribución cómoda y funcional.</span>
+            </div>
+            <span class="tag-mini">Cómodo</span>
+          </div>
+          <div class="model-preview" aria-label="Vista previa del plano Tipo 2">
+            <iframe title="Plano Tipo 2" loading="lazy"
+              data-pdf="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/2-Plano-Tecnico-Tipo-2.pdf"></iframe>
+            <div class="fallback">No se pudo cargar la vista previa. Tocá “Ver plano (PDF)”.</div>
+            <a class="tap" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M13 5a1 1 0 0 0 0 2h3.6L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.4V12a1 1 0 1 0 2 0V5h-7z"/><path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 1 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/></svg>
+              Abrir
+            </a>
+          </div>
+          <div class="model-actions">
+            <a class="btn small ghost" href="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/2-Plano-Tecnico-Tipo-2.pdf" target="_blank" rel="noopener">Ver plano (PDF)</a>
+            <button class="btn small wp js-model-wa" data-model="Tipo 2" type="button">Consultar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Tipo 3 -->
+        <article class="model-card reveal" style="transition-delay:.12s">
+          <div class="model-top">
+            <div class="model-title">
+              <b>Plano Tipo 3</b>
+              <span>Más espacio · ambientes amplios.</span>
+            </div>
+            <span class="tag-mini">Amplio</span>
+          </div>
+          <div class="model-preview" aria-label="Vista previa del plano Tipo 3">
+            <iframe title="Plano Tipo 3" loading="lazy"
+              data-pdf="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/3-Plano-Tecnico-Tipo-3.pdf"></iframe>
+            <div class="fallback">No se pudo cargar la vista previa. Tocá “Ver plano (PDF)”.</div>
+            <a class="tap" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M13 5a1 1 0 0 0 0 2h3.6L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.4V12a1 1 0 1 0 2 0V5h-7z"/><path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 1 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/></svg>
+              Abrir
+            </a>
+          </div>
+          <div class="model-actions">
+            <a class="btn small ghost" href="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/3-Plano-Tecnico-Tipo-3.pdf" target="_blank" rel="noopener">Ver plano (PDF)</a>
+            <button class="btn small wp js-model-wa" data-model="Tipo 3" type="button">Consultar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Tipo 3 + Garage -->
+        <article class="model-card reveal">
+          <div class="model-top">
+            <div class="model-title">
+              <b>Tipo 3 + Garage</b>
+              <span>Versión con garage.</span>
+            </div>
+            <span class="tag-mini">Garage</span>
+          </div>
+          <div class="model-preview" aria-label="Vista previa del plano Tipo 3 Garage">
+            <iframe title="Plano Tipo 3 Garage" loading="lazy"
+              data-pdf="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/3-Plano-Tecnico-Tipo-3-Garage.pdf"></iframe>
+            <div class="fallback">No se pudo cargar la vista previa. Tocá “Ver plano (PDF)”.</div>
+            <a class="tap" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M13 5a1 1 0 0 0 0 2h3.6L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.4V12a1 1 0 1 0 2 0V5h-7z"/><path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 1 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/></svg>
+              Abrir
+            </a>
+          </div>
+          <div class="model-actions">
+            <a class="btn small ghost" href="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/3-Plano-Tecnico-Tipo-3-Garage.pdf" target="_blank" rel="noopener">Ver plano (PDF)</a>
+            <button class="btn small wp js-model-wa" data-model="Tipo 3 + Garage" type="button">Consultar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Tipo 4 -->
+        <article class="model-card reveal" style="transition-delay:.06s">
+          <div class="model-top">
+            <div class="model-title">
+              <b>Plano Tipo 4</b>
+              <span>Gran equilibrio entre espacio y costo.</span>
+            </div>
+            <span class="tag-mini">Balance</span>
+          </div>
+          <div class="model-preview" aria-label="Vista previa del plano Tipo 4">
+            <iframe title="Plano Tipo 4" loading="lazy"
+              data-pdf="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/4-Plano-Tecnico-Tipo-4.pdf"></iframe>
+            <div class="fallback">No se pudo cargar la vista previa. Tocá “Ver plano (PDF)”.</div>
+            <a class="tap" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M13 5a1 1 0 0 0 0 2h3.6L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.4V12a1 1 0 1 0 2 0V5h-7z"/><path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 1 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/></svg>
+              Abrir
+            </a>
+          </div>
+          <div class="model-actions">
+            <a class="btn small ghost" href="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/4-Plano-Tecnico-Tipo-4.pdf" target="_blank" rel="noopener">Ver plano (PDF)</a>
+            <button class="btn small wp js-model-wa" data-model="Tipo 4" type="button">Consultar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Tipo 4 + Garage -->
+        <article class="model-card reveal" style="transition-delay:.12s">
+          <div class="model-top">
+            <div class="model-title">
+              <b>Tipo 4 + Garage</b>
+              <span>Más comodidad con garage.</span>
+            </div>
+            <span class="tag-mini">Garage</span>
+          </div>
+          <div class="model-preview" aria-label="Vista previa del plano Tipo 4 Garage">
+            <iframe title="Plano Tipo 4 Garage" loading="lazy"
+              data-pdf="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/4-Plano-Tecnico-Tipo-4-Garage.pdf"></iframe>
+            <div class="fallback">No se pudo cargar la vista previa. Tocá “Ver plano (PDF)”.</div>
+            <a class="tap" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M13 5a1 1 0 0 0 0 2h3.6L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.4V12a1 1 0 1 0 2 0V5h-7z"/><path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 1 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/></svg>
+              Abrir
+            </a>
+          </div>
+          <div class="model-actions">
+            <a class="btn small ghost" href="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/4-Plano-Tecnico-Tipo-4-Garage.pdf" target="_blank" rel="noopener">Ver plano (PDF)</a>
+            <button class="btn small wp js-model-wa" data-model="Tipo 4 + Garage" type="button">Consultar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Tipo 5 -->
+        <article class="model-card reveal">
+          <div class="model-top">
+            <div class="model-title">
+              <b>Plano Tipo 5</b>
+              <span>Más ambientes · ideal familia.</span>
+            </div>
+            <span class="tag-mini">Familia</span>
+          </div>
+          <div class="model-preview" aria-label="Vista previa del plano Tipo 5">
+            <iframe title="Plano Tipo 5" loading="lazy"
+              data-pdf="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/5-Plano-tecnico-Tipo-5.pdf"></iframe>
+            <div class="fallback">No se pudo cargar la vista previa. Tocá “Ver plano (PDF)”.</div>
+            <a class="tap" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M13 5a1 1 0 0 0 0 2h3.6L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.4V12a1 1 0 1 0 2 0V5h-7z"/><path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 1 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/></svg>
+              Abrir
+            </a>
+          </div>
+          <div class="model-actions">
+            <a class="btn small ghost" href="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/5-Plano-tecnico-Tipo-5.pdf" target="_blank" rel="noopener">Ver plano (PDF)</a>
+            <button class="btn small wp js-model-wa" data-model="Tipo 5" type="button">Consultar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Tipo 7 + Garage -->
+        <article class="model-card reveal" style="transition-delay:.06s">
+          <div class="model-top">
+            <div class="model-title">
+              <b>Tipo 7 + Garage</b>
+              <span>Versión amplia con garage.</span>
+            </div>
+            <span class="tag-mini">Premium</span>
+          </div>
+          <div class="model-preview" aria-label="Vista previa del plano Tipo 7 Garage">
+            <iframe title="Plano Tipo 7 Garage" loading="lazy"
+              data-pdf="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/7-Plano-tecnico-Tipo-7-GARAGE.pdf"></iframe>
+            <div class="fallback">No se pudo cargar la vista previa. Tocá “Ver plano (PDF)”.</div>
+            <a class="tap" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M13 5a1 1 0 0 0 0 2h3.6L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.4V12a1 1 0 1 0 2 0V5h-7z"/><path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 1 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/></svg>
+              Abrir
+            </a>
+          </div>
+          <div class="model-actions">
+            <a class="btn small ghost" href="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/7-Plano-tecnico-Tipo-7-GARAGE.pdf" target="_blank" rel="noopener">Ver plano (PDF)</a>
+            <button class="btn small wp js-model-wa" data-model="Tipo 7 + Garage" type="button">Consultar por WhatsApp</button>
+          </div>
+        </article>
+
+        <!-- Tipo 9 -->
+        <article class="model-card reveal" style="transition-delay:.12s">
+          <div class="model-top">
+            <div class="model-title">
+              <b>Plano Tipo 9</b>
+              <span>Uno de los más completos.</span>
+            </div>
+            <span class="tag-mini">Full</span>
+          </div>
+          <div class="model-preview" aria-label="Vista previa del plano Tipo 9">
+            <iframe title="Plano Tipo 9" loading="lazy"
+              data-pdf="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/9-Plano-tecnico-Tipo-9.pdf"></iframe>
+            <div class="fallback">No se pudo cargar la vista previa. Tocá “Ver plano (PDF)”.</div>
+            <a class="tap" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M13 5a1 1 0 0 0 0 2h3.6L10.3 13.3a1 1 0 1 0 1.4 1.4L18 8.4V12a1 1 0 1 0 2 0V5h-7z"/><path d="M5 7a2 2 0 0 1 2-2h3a1 1 0 1 1 0 2H7v10h10v-3a1 1 0 1 1 2 0v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/></svg>
+              Abrir
+            </a>
+          </div>
+          <div class="model-actions">
+            <a class="btn small ghost" href="https://viviendasdelvalle.com.ar/wp-content/uploads/2024/09/9-Plano-tecnico-Tipo-9.pdf" target="_blank" rel="noopener">Ver plano (PDF)</a>
+            <button class="btn small wp js-model-wa" data-model="Tipo 9" type="button">Consultar por WhatsApp</button>
+          </div>
+        </article>
+      </div>
+
+      <div style="margin-top:14px" class="reveal">
+        <a class="btn ghost" href="#asesor">No sé cuál elegir · Quiero asesor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <h2>Preguntas frecuentes</h2>
+          <p>Respuestas rápidas y claras para ayudarte a decidir.</p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="faqcol">
+          <div class="qa reveal">
+            <button class="q" type="button">
+              ¿Qué es una vivienda industrializada?
+              <span>Ver</span>
+              <div class="chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 15.5 5.5 9a1 1 0 0 1 1.4-1.4L12 12.7l5.1-5.1A1 1 0 1 1 18.5 9L12 15.5z"/></svg>
+              </div>
+            </button>
+            <div class="a">
+              <div>
+                Utiliza un sistema de construcción mixto. Las paredes exteriores se realizan con ladrillo y las divisiones interiores
+                se hacen con placas de yeso sobre una estructura de bastidores de madera, logrando una vivienda sólida y confortable.
+              </div>
+            </div>
+          </div>
+
+          <div class="qa reveal" style="transition-delay:.06s">
+            <button class="q" type="button">
+              ¿Puedo elegir el modelo de vivienda?
+              <span>Ver</span>
+              <div class="chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 15.5 5.5 9a1 1 0 0 1 1.4-1.4L12 12.7l5.1-5.1A1 1 0 1 1 18.5 9L12 15.5z"/></svg>
+              </div>
+            </button>
+            <div class="a">
+              <div>
+                Sí. Contamos con más de 10 modelos adaptables a tus necesidades de espacio y confort.
+                En esta landing te dejamos accesos directos a los planos técnicos para que puedas compararlos.
+              </div>
+            </div>
+          </div>
+
+          <div class="qa reveal" style="transition-delay:.12s">
+            <button class="q" type="button">
+              ¿La vivienda cuenta con características técnicas?
+              <span>Ver</span>
+              <div class="chev" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 15.5 5.5 9a1 1 0 0 1 1.4-1.4L12 12.7l5.1-5.1A1 1 0 1 1 18.5 9L12 15.5z"/></svg>
+              </div>
+            </button>
+            <div class="a">
+              <div>
+                Sí. El sistema está pensado para adaptarse a distintos tipos de terreno o clima, con estructura resistente y terminaciones prolijas.
+                Consultá a un asesor para evaluar tu caso puntual.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="badge-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 7h-6l-1-2H10L9 7H3v2h18V7zm-2 4H5l1 10h12l1-10z"/></svg>
+          </div>
+          <h4>¿Listo para dar el paso?</h4>
+          <p>Escribinos por WhatsApp y te respondemos rápido. Si ya sabés qué modelo querés, decinos cuál y lo vemos juntos.</p>
+          <div style="margin-top:12px;">
+            <a class="btn primary" href="#asesor">Quiero un asesor</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <h2>Testimonios</h2>
+          <p>Historias reales de familias que llegaron a su casa propia.</p>
+        </div>
+      </div>
+
+      <div class="testi">
+        <div class="quote reveal">
+          <p>“Después de mucho esfuerzo, llegamos a nuestra casa propia. Gracias Viviendas del Valle por ayudarnos con nuestro sueño, ¡estamos felices!”</p>
+          <div class="who">
+            <div class="avatar"><img src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/icono_persona-150x150.jpg" alt="Cliente" /></div>
+            <div>
+              <b>Familia Peralta</b>
+              <span>Cutral Co, Neuquén</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote reveal" style="transition-delay:.06s">
+          <p>“Estamos muy contentos con nuestra vivienda industrializada, cálida, confortable y con materiales de excelente calidad.”</p>
+          <div class="who">
+            <div class="avatar"><img src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/icono_persona-150x150.jpg" alt="Cliente" /></div>
+            <div>
+              <b>Hugo y Mónica</b>
+              <span>Villa Pehuenia, Neuquén</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote reveal" style="transition-delay:.12s">
+          <p>“Nos casamos, buscamos en internet y encontramos a Viviendas del Valle. Increíble que a los pocos días ya estábamos viviendo en nuestra propia casa.”</p>
+          <div class="who">
+            <div class="avatar"><img src="https://viviendasdelvalle.com.ar/wp-content/uploads/2018/11/icono_persona-150x150.jpg" alt="Cliente" /></div>
+            <div>
+              <b>Laura y Andrés</b>
+              <span>Neuquén, Neuquén</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <h2>Contacto</h2>
+          <p>Oficina central en Neuquén. Asesoría y ventas por teléfono/WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="box reveal">
+          <h3 style="margin:0 0 6px; font-size:18px;">Datos de contacto</h3>
+          <p style="margin:0; color:var(--muted); font-size:14px; line-height:1.55;">
+            Si querés que te llamemos, completá el formulario de arriba o tocá el botón de WhatsApp.
+          </p>
+
+          <div class="info">
+            <div class="infocard">
+              <div class="badge-ico" aria-hidden="true" style="width:42px;height:42px;border-radius:16px;">
+                <svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v8h6v-5h2v5h6v-8h3L12 3z"/></svg>
+              </div>
+              <div>
+                <b>Oficina Central · Administración</b>
+                <p>
+                  Tel: 0299 15 6554433<br />
+                  Independencia 860 · Neuquén · Argentina
+                </p>
+              </div>
+            </div>
+
+            <div class="infocard">
+              <div class="badge-ico" aria-hidden="true" style="width:42px;height:42px;border-radius:16px;">
+                <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 3 3.6 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.4.6 3.7.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.3 22 2 13.7 2 3c0-.6.4-1 1-1h3.9c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.7.1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg>
+              </div>
+              <div>
+                <b>Asesoría y Ventas</b>
+                <p>
+                  0299 154214138<br />
+                  0299 154723204<br />
+                  0299 155857081
+                </p>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="#asesor">Pedir asesor</a>
+              <a class="btn ghost" href="https://www.facebook.com/viviendasDelValleoficial/" target="_blank" rel="noopener">Facebook</a>
+              <a class="btn ghost" href="https://www.instagram.com/viviendasdelvalle" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="map reveal" aria-label="Mapa">
+          <iframe
+            loading="lazy"
+            src="https://maps.google.com/maps?q=Independencia%20860%20Neuqu%C3%A9n&t=m&z=13&output=embed&iwloc=near"
+            title="Independencia 860 Neuquén"
+            aria-label="Independencia 860 Neuquén">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>© <span id="year"></span> Viviendas del Valle. Todos los derechos reservados.</div>
+        <div>Desarrollo: Savia</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating -->
+  <div class="wa-float" aria-label="WhatsApp flotante">
+    <a class="wa" id="waFloat" href="#" rel="nofollow">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.9 9.9 0 0 0-8.5 15l-1 3.7 3.8-1A9.9 9.9 0 1 0 12 2zm0 18a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-2.2.6.6-2.1-.2-.3A8.1 8.1 0 1 1 12 20zm4.7-6.1c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.6.1-.2.2-.7.7-.9.9-.1.2-.3.2-.5.1s-.9-.3-1.7-1a6.5 6.5 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.2.2-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.7 2.6 4.2 3.7.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1 0-.2-.2-.2-.4-.3z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <script>
+    // ===============================
+    // CONFIGURACIÓN (cambiar WhatsApp)
+    // ===============================
+    const DEFAULT_WA = "5492996554433";
+
+    // ===============================
+    // UTILIDADES
+    // ===============================
+    const $ = (q, el=document) => el.querySelector(q);
+    const $$ = (q, el=document) => Array.from(el.querySelectorAll(q));
+
+    function openWhatsApp(number, message){
+      const text = encodeURIComponent((message || "").trim());
+      const url = `https://wa.me/${number}?text=${text}`;
+      window.open(url, "_blank", "noopener");
+    }
+
+    // ===============================
+    // NAV: Drawer móvil
+    // ===============================
+    const hamb = $("#hamb");
+    const overlay = $("#overlay");
+    const drawer = $("#drawer");
+    const closeDrawer = $("#closeDrawer");
+
+    function setDrawer(open){
+      drawer.classList.toggle("open", open);
+      overlay.classList.toggle("open", open);
+      hamb?.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.style.overflow = open ? "hidden" : "";
+    }
+
+    hamb?.addEventListener("click", () => setDrawer(true));
+    overlay?.addEventListener("click", () => setDrawer(false));
+    closeDrawer?.addEventListener("click", () => setDrawer(false));
+    $$(".drawerLink").forEach(a => a.addEventListener("click", () => setDrawer(false)));
+
+    // ===============================
+    // REVEAL on scroll
+    // ===============================
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    $$(".reveal").forEach(el => io.observe(el));
+
+    // ===============================
+    // LEAD FORM -> WhatsApp
+    // ===============================
+    const leadForm = $("#leadForm");
+    leadForm?.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      const name = $("#name").value.trim();
+      const phone = $("#phone").value.trim();
+      const city = $("#city").value.trim();
+      const model = $("#model").value;
+      const bedrooms = $("#bedrooms").value;
+      const msg = $("#msg").value.trim();
+
+      const message =
+`Hola! Soy ${name}.
+Teléfono: ${phone}${city ? `\nCiudad: ${city}` : ""}
+Modelo: ${model}
+Dormitorios: ${bedrooms}${msg ? `\n\nMensaje: ${msg}` : ""}
+
+Quisiera que un asesor me contacte.`;
+
+      openWhatsApp(DEFAULT_WA, message);
+    });
+
+    // ===============================
+    // WhatsApp flotante
+    // ===============================
+    const waFloat = $("#waFloat");
+    function setWAFloating(){
+      const message = "Hola! Quisiera hablar con un asesor sobre una vivienda industrializada (construcción mixta con paredes de ladrillo).";
+      waFloat.href = `https://wa.me/${DEFAULT_WA}?text=${encodeURIComponent(message)}`;
+      waFloat.target = "_blank";
+      waFloat.rel = "noopener";
+    }
+    setWAFloating();
+
+    // ===============================
+    // CTA WhatsApp por modelo (cards)
+    // ===============================
+    $$(".js-model-wa").forEach((btn)=>{
+      btn.addEventListener("click", ()=>{
+        const model = btn.getAttribute("data-model") || "un modelo";
+        const message = `Hola! Quiero consultar por el ${model}.\n¿Me pasan precios, financiación y tiempos de entrega?`;
+        openWhatsApp(DEFAULT_WA, message);
+      });
+    });
+
+    // ===============================
+    // ✅ PREVIEW DE PLANOS
+    // - En móvil usamos Google gview (más compatible)
+    // - En desktop: PDF directo con zoom MÁS BAJO (más entero)
+    // ===============================
+    function isLikelyMobile(){
+      const mq = window.matchMedia("(max-width: 980px)").matches;
+      const ua = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent || "");
+      return mq || ua;
+    }
+
+    function buildViewerSrc(pdfUrl){
+      const clean = (pdfUrl || "").trim();
+      if(!clean) return "";
+
+      if(isLikelyMobile()){
+        return `https://docs.google.com/gview?embedded=1&url=${encodeURIComponent(clean)}`;
+      }
+
+      // ✅ ACÁ ESTÁ EL ZOOM (bajalo a 35 o 30 si querés más “entero”)
+      return `${clean}#page=1&zoom=45&toolbar=0&navpanes=0`;
+    }
+
+    function setupPlanPreviews(){
+      $$(".model-preview").forEach(preview=>{
+        const iframe = $("iframe", preview);
+        const tap = $(".tap", preview);
+        const pdf = iframe?.dataset?.pdf;
+        if(!iframe || !pdf) return;
+
+        if(tap) tap.href = pdf;
+
+        const nextSrc = buildViewerSrc(pdf);
+        if(iframe.src !== nextSrc) iframe.src = nextSrc;
+
+        preview.classList.remove("is-fallback");
+        let loaded = false;
+        const t = setTimeout(()=>{
+          if(!loaded) preview.classList.add("is-fallback");
+        }, 2500);
+
+        iframe.addEventListener("load", ()=>{
+          loaded = true;
+          clearTimeout(t);
+          preview.classList.remove("is-fallback");
+        }, { once: true });
+      });
+    }
+
+    setupPlanPreviews();
+
+    let resizeTimer = null;
+    window.addEventListener("resize", ()=>{
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(setupPlanPreviews, 150);
+    });
+
+    // ===============================
+    // ✅ Galería: scroll con botones + lightbox
+    // ===============================
+    const track = $("#thumbTrack");
+    const gPrev = $("#gPrev");
+    const gNext = $("#gNext");
+
+    function scrollGallery(dir=1){
+      if(!track) return;
+      const amount = Math.min(track.clientWidth * 0.9, 520);
+      track.scrollBy({ left: dir * amount, behavior: "smooth" });
+    }
+
+    gPrev?.addEventListener("click", ()=>scrollGallery(-1));
+    gNext?.addEventListener("click", ()=>scrollGallery(1));
+
+    // Lightbox
+    const lightbox = $("#lightbox");
+    const lightboxBg = $("#lightboxBg");
+    const lightboxClose = $("#lightboxClose");
+    const lightboxImg = $("#lightboxImg");
+
+    function openLightbox(src){
+      if(!lightbox || !lightboxImg) return;
+      lightboxImg.src = src;
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLightbox(){
+      if(!lightbox) return;
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if(lightboxImg) lightboxImg.src = "";
+    }
+
+    $$(".thumb").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const full = btn.getAttribute("data-full");
+        if(full) openLightbox(full);
+      });
+    });
+
+    lightboxBg?.addEventListener("click", closeLightbox);
+    lightboxClose?.addEventListener("click", closeLightbox);
+    window.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape") closeLightbox();
+    });
+
+    // ===============================
+    // FAQ Accordion
+    // ===============================
+    $$(".qa").forEach(box=>{
+      const btn = $(".q", box);
+      btn.addEventListener("click", ()=>{
+        const isOpen = box.classList.contains("open");
+        $$(".qa.open").forEach(b=> b!==box && b.classList.remove("open"));
+        box.classList.toggle("open", !isOpen);
+      });
+    });
+    const firstQA = $$(".qa")[0];
+    if(firstQA) firstQA.classList.add("open");
+
+    // ===============================
+    // Tilt suave en el formulario
+    // ===============================
+    const lead = $(".lead");
+    if(lead && window.matchMedia("(prefers-reduced-motion: no-preference)").matches){
+      lead.addEventListener("mousemove", (e)=>{
+        const r = lead.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        const rx = (-y * 4).toFixed(2);
+        const ry = (x * 5).toFixed(2);
+        lead.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-1px)`;
+      });
+      lead.addEventListener("mouseleave", ()=>{ lead.style.transform = ""; });
+    }
+
+    $("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
